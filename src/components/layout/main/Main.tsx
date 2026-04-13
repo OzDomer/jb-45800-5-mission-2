@@ -6,7 +6,7 @@ export default function Main() {
 
     return(
         <Routes>
-            <Route path="/" element={<Navigate to="weather" />} />
+            <Route path="/" element={<Navigate to="/weather" />} />
             <Route path="/weather" element={<WeatherPage/>} />
              <Route path="*" element={<NotFound/>} />
         </Routes>

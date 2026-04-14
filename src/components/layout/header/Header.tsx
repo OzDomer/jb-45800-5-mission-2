@@ -5,7 +5,7 @@ export default function Header(){
         <div>
             <NavLink to={"/weather"}>Home</NavLink>
             <NavLink to={"/history"}>History</NavLink>
-            <NavLink>About</NavLink>
+            <NavLink to={"/about"}>About</NavLink>
         </div>
     )
 }

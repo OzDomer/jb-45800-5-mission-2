@@ -3,7 +3,6 @@ import type HistoryEntry from "../../../models/HistoryEntry"
 
 export default function HistoryPage() {
     const history: HistoryEntry[] = JSON.parse(localStorage.getItem("history") || "[]")
-        JSON.parse(localStorage.getItem("history") || "[]")
     
 
     return (

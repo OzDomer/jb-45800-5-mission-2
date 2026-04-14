@@ -91,7 +91,8 @@ export default function WeatherPage() {
     }, [])
     return (
         <div className="WeatherPage">
-            {loading && 
+            <h1>Israel Weather</h1>
+            {loading &&
             <div>
             <p>Loading...</p>
             <Spinner />

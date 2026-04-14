@@ -1,0 +1,58 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(7, 11, 18, 0.82);
+  border-bottom: 1px solid var(--border);
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+}
+
+header > div a {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 16px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+
+header > div a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+
+header > div a:hover {
+  color: var(--cream);
+  background: rgba(255,255,255,0.05);
+}
+
+header > div a.active {
+  color: var(--gold);
+}
+
+header > div a.active::after {
+  transform: scaleX(1);
+}

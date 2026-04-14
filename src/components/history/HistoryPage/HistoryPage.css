@@ -1,0 +1,64 @@
+.HistoryPage {
+  width: 100%;
+  max-width: 720px;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.HistoryPage h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.HistoryPage table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.HistoryPage thead {
+  background: rgba(232, 162, 32, 0.08);
+  border-bottom: 1px solid var(--border-hi);
+}
+
+.HistoryPage th {
+  font-family: var(--font-data);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.HistoryPage td {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--cream);
+  padding: 13px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.HistoryPage tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.HistoryPage tbody tr {
+  transition: background 0.15s;
+}
+
+.HistoryPage tbody tr:hover {
+  background: rgba(232, 162, 32, 0.05);
+}

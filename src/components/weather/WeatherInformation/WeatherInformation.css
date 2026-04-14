@@ -1,0 +1,119 @@
+.WeatherInformation {
+  width: 100%;
+  max-width: 680px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 40px;
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06);
+  animation: cardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── City name ── */
+.WeatherInformation h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.WeatherInformation h3 {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 20px;
+}
+
+/* ── Condition row ── */
+.WeatherInformation .condition-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.WeatherInformation .condition-row img {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 2px 8px rgba(232,162,32,0.3));
+}
+
+.WeatherInformation .condition-row span {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+/* ── Temperature ── */
+.WeatherInformation .temp-block {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.WeatherInformation .temp-main {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 7rem);
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+.WeatherInformation .temp-feels {
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.WeatherInformation .temp-feels strong {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ── Data grid ── */
+.WeatherInformation .data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.WeatherInformation .data-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.WeatherInformation .data-item .label {
+  font-family: var(--font-data);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.WeatherInformation .data-item .value {
+  font-family: var(--font-data);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--sky);
+}

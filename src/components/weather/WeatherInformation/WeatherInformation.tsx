@@ -14,20 +14,46 @@ export default function WeatherInformation(props: WeatherInformationProps) {
             condition: { text, icon }, wind_kph, wind_dir, humidity, feelslike_c }
     } = weather
 
-
     return (
         <div className="WeatherInformation">
-            <h2>{name.replace(/`/g, "")}, {country}</h2>
-            <h3>{country}</h3>
-            <p>Region: {region}</p>
-            <p>Local time: {localtime}</p>
-            <p>Last updated: {last_updated}</p>
-            <img src={`https:${icon}`} alt={text} />
-            <p>{text}</p>
-            <p>Temperature: {temp_c}°C</p>
-            <p>Feels like: {feelslike_c}°C</p>
-            <p>Humidity: {humidity}%</p>
-            <p>Wind: {wind_kph} kph {wind_dir}</p>
+            <h2>{name.replace(/`/g, "")}</h2>
+            <h3>{region ? region : country}</h3>
+
+            <div className="condition-row">
+                <img src={`https:${icon}`} alt={text} />
+                <span>{text}</span>
+            </div>
+
+            <div className="temp-block">
+                <span className="temp-main">{temp_c}°</span>
+                <div className="temp-feels">
+                    <strong>{feelslike_c}°C</strong>
+                    feels like
+                </div>
+            </div>
+
+            <div className="data-grid">
+                <div className="data-item">
+                    <div className="label">Humidity</div>
+                    <div className="value">{humidity}%</div>
+                </div>
+                <div className="data-item">
+                    <div className="label">Wind</div>
+                    <div className="value">{wind_kph} kph {wind_dir}</div>
+                </div>
+                <div className="data-item">
+                    <div className="label">Country</div>
+                    <div className="value">{country}</div>
+                </div>
+                <div className="data-item">
+                    <div className="label">Local time</div>
+                    <div className="value">{localtime.split(" ")[1]}</div>
+                </div>
+                <div className="data-item">
+                    <div className="label">Last updated</div>
+                    <div className="value">{last_updated.split(" ")[1]}</div>
+                </div>
+            </div>
         </div>
     )
 }

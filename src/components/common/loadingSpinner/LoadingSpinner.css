@@ -1,0 +1,12 @@
+.Spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.Spinner img {
+  width: 64px;
+  height: 64px;
+  opacity: 0.85;
+}

@@ -5,10 +5,11 @@ interface WeatherInformationProps{
     weather: CurrentWeather
 }
 
-
-
 export default function WeatherInformation(props: WeatherInformationProps) {
+
     
+
+
     const {
     location: {name, country, localtime}, 
     current: {last_updated ,temp_c, 

@@ -98,7 +98,7 @@ export default function WeatherPage() {
             <Spinner />
             </div>}
             {!loading && cities.length > 0 &&
-                <select onChange={displaySelection} defaultValue="">
+                <select onChange={displaySelection} defaultValue="" dir="rtl">
                     <option value="" disabled>Select a city</option>
                     {cities.map((city, index) => (
                         <option key={index} value={city.city_name_en.trim()}>

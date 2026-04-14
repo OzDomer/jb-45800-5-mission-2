@@ -4,10 +4,11 @@ import "./WeatherInformation.css"
 interface WeatherInformationProps {
     weather: CurrentWeather
     region: string | null
+    cityNameHe: string | null
 }
 
 export default function WeatherInformation(props: WeatherInformationProps) {
-    const { weather, region } = props
+    const { weather, region, cityNameHe } = props
     const {
         location: { name, country, localtime },
         current: { last_updated, temp_c,
@@ -16,11 +17,11 @@ export default function WeatherInformation(props: WeatherInformationProps) {
 
     return (
         <div className="WeatherInformation">
-            <h2>{name.replace(/`/g, "")}</h2>
-            <h3>{region ? region : country}</h3>
+            <h2 dir="rtl">{cityNameHe ? cityNameHe.trim() : name.replace(/`/g, "")}</h2>
+            <h3>{region ? ("Region: " + region) : country}</h3>
 
             <div className="condition-row">
-                <img src={`https:${icon}`} alt={text} />
+                <img src={"https:" + icon} alt={text} />
                 <span>{text}</span>
             </div>
 

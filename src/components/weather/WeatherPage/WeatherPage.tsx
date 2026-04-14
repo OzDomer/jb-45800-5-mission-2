@@ -17,6 +17,7 @@ export default function WeatherPage() {
     const [error, setError] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null)
+    const [selectedCityHe, setSelectedCityHe] = useState<string | null>(null)
 
 
     async function displaySelection(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -27,11 +28,14 @@ export default function WeatherPage() {
         try {
             setLoading(true)
             setError(null)
+            const validCountries = ["Israel", "Palestinian Territory", "West Bank"]
             let response
             try {
                 response = await axiosInstance.get<CurrentWeather>('/current.json', { params: { q: cityName } })
+                // only validate country on the direct lookup — bureau fallback is from verified Israeli gov data
+                if (!validCountries.includes(response.data.location.country)) throw new Error("outside Israel")
             } catch {
-                // city not found in WeatherAPI — fall back to the bureau city's English name
+                // city not found or outside Israel — fall back to the bureau city's English name
                 const bureauCity = cities.find(c =>
                     c.PIBA_bureau_name.trim() === selected?.PIBA_bureau_name?.trim() &&
                     c.city_name_he.trim() === c.PIBA_bureau_name.trim()
@@ -39,9 +43,8 @@ export default function WeatherPage() {
                 if (!bureauCity) throw new Error("City not found")
                 response = await axiosInstance.get<CurrentWeather>('/current.json', { params: { q: bureauCity.city_name_en.trim() } })
             }
-            const validCountries = ["Israel", "Palestinian Territory", "West Bank"]
-            if (!validCountries.includes(response.data.location.country)) throw new Error("City not in Israel region")
             setSelectedRegion(selected?.PIBA_bureau_name || null)
+            setSelectedCityHe(selected?.city_name_he || null)
             setWeather(response.data)
             // after selecting a value it gets pushed to local storage with requested params
             const entry: HistoryEntry = {
@@ -69,7 +72,7 @@ export default function WeatherPage() {
                 const { data } = await axios.get<City>("https://data.gov.il/api/3/action/datastore_search?resource_id=8f714b6f-c35c-4b40-a0e7-547b675eee0e&limit=1500")
                 const records = data.result.records
                 // filter out: cities with no english name, no bureau name, duplicates,
-                // and cities whose bureau city has no english name (fallback would fail)
+                // and cities without bureau city has no english name (fallback would fail)
                 setCities(records.filter((city, index) =>
                     city.city_name_en.trim() !== "" &&
                     city.PIBA_bureau_name && city.PIBA_bureau_name.trim() !== "" &&
@@ -107,7 +110,7 @@ export default function WeatherPage() {
                     ))}
                 </select>
             }
-            {weather && <WeatherInformation weather={weather} region={selectedRegion} />}
+            {weather && <WeatherInformation weather={weather} region={selectedRegion} cityNameHe={selectedCityHe} />}
             {error &&
             <div>
             <p>{error}

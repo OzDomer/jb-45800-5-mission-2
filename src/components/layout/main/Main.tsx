@@ -1,14 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import WeatherPage from "../../weather/WeatherPage/WeatherPage";
 import NotFound from "../../not-found/NotFound";
+import HistoryPage from "../../history/HistoryPage/HistoryPage";
 
 export default function Main() {
 
-    return(
+    return (
         <Routes>
             <Route path="/" element={<Navigate to="/weather" />} />
-            <Route path="/weather" element={<WeatherPage/>} />
-             <Route path="*" element={<NotFound/>} />
+            <Route path="/weather" element={<WeatherPage />} />
+            <Route path="/history" element={<HistoryPage />}/>
+            <Route path="*" element={<NotFound />} />
         </Routes>
     )
 

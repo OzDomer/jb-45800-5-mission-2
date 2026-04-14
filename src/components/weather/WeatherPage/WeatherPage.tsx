@@ -101,7 +101,7 @@ export default function WeatherPage() {
                 <select onChange={displaySelection} defaultValue="" dir={selectedCityHe ? "rtl" : "ltr"}>
                     <option value="" disabled>Select a city</option>
                     {cities.map((city, index) => (
-                        <option key={index} value={city.city_name_en.trim()}>
+                        <option key={index} value={city.city_name_en.trim()} dir="rtl">
                             {city.city_name_he.trim() === city.PIBA_bureau_name.trim()
                                 ? city.city_name_he
                                 : `${city.city_name_he} (מחוז: ${city.PIBA_bureau_name.trim()})`}

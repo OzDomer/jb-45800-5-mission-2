@@ -8,6 +8,7 @@ export default function HistoryPage() {
 
     return (
         <div className="HistoryPage">
+            <h1>History</h1>
             <table>
                 <thead>
                     <tr>

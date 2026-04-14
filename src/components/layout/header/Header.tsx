@@ -1,8 +1,11 @@
+import { NavLink } from "react-router-dom"
 import "./Header.css"
 export default function Header(){
     return(
         <div>
-            <h1>My weather app</h1>
+            <NavLink to={"/weather"}>Home</NavLink>
+            <NavLink>History</NavLink>
+            <NavLink>About</NavLink>
         </div>
     )
 }
